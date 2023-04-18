@@ -15,7 +15,7 @@
 
         {% for comment in post_detail.comment_model.all %}
         <article>
-            <strong>{{comment.name}} at {{comment.date_added}}</strong><br/>
+            <strong>{{comment.name}} at {{comment.date_added}}</strong><button>delete</button><br/>
             {{comment.body}}
         </article>
         {% endfor %}
