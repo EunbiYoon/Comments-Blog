@@ -4,7 +4,7 @@
     {% for post in posts_set %}
         <article>
             <h2 class="title">{{ post.title }}</h2>
-            <time>{{ post.date_added }}</time>
+            <time>{{ post.date_added|date:"d M, y h:i" }}</time>
             <p> {{ post.intro }} </p>
             <a href="{% url 'detail_url' post.slug %}">Read More</a>
         </article>
