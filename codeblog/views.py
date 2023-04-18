@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from codeblog.models import Category, Post
+from codeblog.forms import CommentForm
 
 # Create your views here.
 def frontpageView(request):
@@ -11,8 +12,10 @@ def frontpageView(request):
 
 def detailView(request, slug):
     post=Post.objects.get(slug=slug)
+    form=CommentForm()
     context={
-        'post_detail':post
+        'post_detail':post,
+        'form_detail':form
     }
     return render(request,'detail.html', context)
 
