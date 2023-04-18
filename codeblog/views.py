@@ -15,3 +15,10 @@ def detailView(request, slug):
         'post_detail':post
     }
     return render(request,'detail.html', context)
+
+def categoryView(request, slug):
+    category=Category.objects.get(slug=slug)
+    context={
+        'category_pair':category
+    }
+    return render(request,'category.html', context)

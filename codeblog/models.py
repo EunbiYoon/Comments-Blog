@@ -10,7 +10,7 @@ class Category(models.Model):
         verbose_name_plural='Categories'
 
 class Post(models.Model):
-    category=models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
+    category=models.ForeignKey(Category, related_name='post_model', on_delete=models.CASCADE)
     title=models.CharField(max_length=255)
     slug=models.SlugField()
     intro=models.TextField()

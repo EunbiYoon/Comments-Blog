@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from codeblog.views import frontpageView,detailView
+from codeblog.views import frontpageView,detailView, categoryView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', frontpageView, name='frontpage_url'),
     path('<slug:slug>/', detailView, name='detail_url'),
+    path('category/<slug:slug>/', categoryView, name='category_url'),
 ]

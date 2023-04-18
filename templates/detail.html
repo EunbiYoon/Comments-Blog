@@ -3,7 +3,8 @@
 {% block content %}
     <article>
         <h1><strong>{{ post_detail.title }}</strong></h1>
-        <time>{{ post_detail.date_added }}</time> - <span>{{ post_detail.category.title }}</span>
+        <time>{{ post_detail.date_added }}</time>
+        <a href="{% url 'category_url' post_detail.category.slug %}">{{ post_detail.category.slug }}</a>
         <p><strong>{{ post_detail.intro }}</strong></p>
         <p>{{ post_detail.body }}</p>
     </article>
