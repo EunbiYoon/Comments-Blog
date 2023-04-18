@@ -9,6 +9,10 @@
         <p>{{ post_detail.body }}</p>
         <h2>Comments</h2>
 
+        {% if not post_detail.comment_model.all %}
+            <p>No comments yet!</p>
+        {% endif %}
+
         {% for comment in post_detail.comment_model.all %}
         <article>
             <strong>{{comment.name}} at {{comment.date_added}}</strong><br/>
