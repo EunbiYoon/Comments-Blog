@@ -7,7 +7,15 @@
         <a href="{% url 'category_url' post_detail.category.slug %}">{{ post_detail.category.title }}</a>
         <p><strong>{{ post_detail.intro }}</strong></p>
         <p>{{ post_detail.body }}</p>
-        <h2>Add a comment</h2>
+        <h2>Comments</h2>
+
+        {% for comment in post_detail.comment_model.all %}
+        <article>
+            <strong>{{comment.name}} at {{comment.date_added}}</strong><br/>
+            {{comment.body}}
+        </article>
+        {% endfor %}
+        
         <form method="post" action=".">
             {% csrf_token %}
             {{ form_detail.as_table }}

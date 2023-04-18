@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from codeblog.models import Category, Post
 from codeblog.forms import CommentForm
 
@@ -12,7 +12,17 @@ def frontpageView(request):
 
 def detailView(request, slug):
     post=Post.objects.get(slug=slug)
-    form=CommentForm()
+
+    if request.method=='POST':
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            obj=form.save(commit=False)
+            obj.post=post
+            obj.save()
+            return redirect('detail_url',slug=post.slug)
+    else:
+        form=CommentForm()
+
     context={
         'post_detail':post,
         'form_detail':form
